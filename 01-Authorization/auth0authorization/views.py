@@ -36,16 +36,16 @@ def requires_scope(required_scope):
     return require_scope
 
 
-def ping(request):
+def public(request):
     return HttpResponse("All good. You don't need to be authenticated to call this")
 
 
 @api_view(['GET'])
-def secured(request):
+def private(request):
     return HttpResponse("All good. You only get this message if you're authenticated")
 
 
 @api_view(['GET'])
 @requires_scope('read:agenda')
-def private(request):
+def private_scoped(request):
     return HttpResponse("All good. You're authenticated and the access token has the appropriate scope")

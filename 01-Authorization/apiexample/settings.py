@@ -142,7 +142,7 @@ if ENV_FILE:
     load_dotenv(ENV_FILE)
 
 AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-API_AUIDINCE = os.environ.get('API_ID')
+AUTH0_AUDIENCE = os.environ.get('AUTH0_AUDIENCE')
 PUBLIC_KEY = None
 JWT_ISSUER = None
 
@@ -161,7 +161,7 @@ JWT_AUTH = {
         'auth0authorization.user.jwt_get_username_from_payload_handler',
     'JWT_PUBLIC_KEY': PUBLIC_KEY,
     'JWT_ALGORITHM': 'RS256',
-    'JWT_AUDIENCE': API_AUIDINCE,
+    'JWT_AUDIENCE': AUTH0_AUDIENCE,
     'JWT_ISSUER': JWT_ISSUER,
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }

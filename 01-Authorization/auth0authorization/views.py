@@ -46,6 +46,6 @@ def private(request):
 
 
 @api_view(['GET'])
-@requires_scope('read:agenda')
+@requires_scope('read:messages')
 def private_scoped(request):
     return HttpResponse("All good. You're authenticated and the access token has the appropriate scope")

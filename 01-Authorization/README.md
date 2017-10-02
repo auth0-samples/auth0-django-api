@@ -38,7 +38,7 @@ Authorization header.
 
 You can also try to do a GET to 
 [http://localhost:8000/api/private-scoped/](http://localhost:8000/api/private-scoped) which will throw an error if
-you don't send an access token with the scope `read:agenda` signed with RS256 with the appropriate issuer and audience
+you don't send an access token with the scope `read:messages` signed with RS256 with the appropriate issuer and audience
 in the Authorization header.
 
 # Running the example with Docker

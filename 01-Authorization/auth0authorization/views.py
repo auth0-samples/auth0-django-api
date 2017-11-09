@@ -27,10 +27,11 @@ def requires_scope(required_scope):
         def decorated(*args, **kwargs):
             token = get_token_auth_header(args[0])
             unverified_claims = jwt.get_unverified_claims(token)
-            token_scopes = unverified_claims["scope"].split()
-            for token_scope in token_scopes:
-                if token_scope == required_scope:
-                    return f(*args, **kwargs)
+            if unverified_claims.get("scope"):
+                token_scopes = unverified_claims["scope"].split()
+                for token_scope in token_scopes:
+                    if token_scope == required_scope:
+                        return f(*args, **kwargs)
             return HttpResponse("You don't have access to this resource")
         return decorated
     return require_scope

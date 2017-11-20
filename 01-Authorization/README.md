@@ -4,7 +4,7 @@ This is the seed project you need to use if you're going to create a Python + Dj
 If you just want to create a Regular Django WebApp, please
 check [this project](https://github.com/auth0-samples/auth0-django-samples/tree/master/01-Login)
 
-Please check our [Quickstart](https://auth0.com/docs/quickstart/backend/python) to better understand this sample.
+Please check our [Quickstart](https://auth0.com/docs/quickstart/backend/django) to better understand this sample.
 
 # Running the example
 

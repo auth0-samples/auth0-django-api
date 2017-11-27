@@ -20,7 +20,7 @@ the app will just work:
 ```bash
 # .env file
 AUTH0_DOMAIN=example.auth0.com
-API_ID=YOUR_API_AUDIENCE
+AUTH0_AUDIENCE=YOUR_API_AUDIENCE
 ```
 
 Once you've set those 2 enviroment variables:

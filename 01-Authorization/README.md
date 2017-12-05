@@ -21,6 +21,7 @@ the app will just work:
 # .env file
 AUTH0_DOMAIN=example.auth0.com
 API_IDENTIFIER=YOUR_API_AUDIENCE
+
 ```
 
 Once you've set those 2 environment variables:

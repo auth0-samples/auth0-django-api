@@ -32,13 +32,13 @@ def requires_scope(required_scope):
         def decorated(*args, **kwargs):
             token = get_token_auth_header(args[0])
             AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-            AUTH0_AUDIENCE = os.environ.get('AUTH0_AUDIENCE')
+            API_IDENTIFIER = os.environ.get('API_IDENTIFIER')
             jsonurl = req.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
             jwks = json.loads(jsonurl.read())
             cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
             certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
             public_key = certificate.public_key()
-            decoded = jwt.decode(token, public_key, audience=AUTH0_AUDIENCE, algorithms=['RS256'])
+            decoded = jwt.decode(token, public_key, audience=API_IDENTIFIER, algorithms=['RS256'])
 
             if decoded.get("scope"):
                 token_scopes = decoded["scope"].split()

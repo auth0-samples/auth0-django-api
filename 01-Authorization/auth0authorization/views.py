@@ -1,8 +1,13 @@
+import os
+import jwt
+import json
 from functools import wraps
 
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
-from jose import jwt
+from six.moves.urllib import request as req
+from cryptography.x509 import load_pem_x509_certificate
+from cryptography.hazmat.backends import default_backend
 
 # Create your views here.
 
@@ -26,9 +31,17 @@ def requires_scope(required_scope):
         @wraps(f)
         def decorated(*args, **kwargs):
             token = get_token_auth_header(args[0])
-            unverified_claims = jwt.get_unverified_claims(token)
-            if unverified_claims.get("scope"):
-                token_scopes = unverified_claims["scope"].split()
+            AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
+            AUTH0_AUDIENCE = os.environ.get('AUTH0_AUDIENCE')
+            jsonurl = req.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
+            jwks = json.loads(jsonurl.read())
+            cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
+            certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
+            public_key = certificate.public_key()
+            decoded = jwt.decode(token, public_key, audience=AUTH0_AUDIENCE, algorithms=['RS256'])
+
+            if decoded.get("scope"):
+                token_scopes = decoded["scope"].split()
                 for token_scope in token_scopes:
                     if token_scope == required_scope:
                         return f(*args, **kwargs)

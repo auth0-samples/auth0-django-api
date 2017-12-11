@@ -2,5 +2,5 @@ django
 djangorestframework
 djangorestframework-jwt
 cryptography
-python-jose
+pyjwt
 python-dotenv

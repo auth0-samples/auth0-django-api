@@ -28,7 +28,7 @@ Once you've set those 2 environment variables:
 
 1. Install the needed dependencies with `pip install -r requirements.txt`
 2. Migrate the database with `python manage.py migrate`
-3. Start the server with `python manage.py runserver 0.0.0.0:3010`
+3. Start the server with `python manage.py runserver 3010`
 4. Try calling [http://localhost:3010/api/public](http://localhost:3010/api/public)
 
 # Testing the API

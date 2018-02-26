@@ -53,15 +53,15 @@ def requires_scope(required_scope):
 
 
 def public(request):
-    return JsonResponse({'message': 'All good. You don\'t need to be authenticated to call this'})
+    return JsonResponse({'message': 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'})
 
 
 @api_view(['GET'])
 def private(request):
-    return JsonResponse({'message': 'All good. You only get this message if you\'re authenticated'})
+    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated to see this.'})
 
 
 @api_view(['GET'])
 @requires_scope('read:messages')
 def private_scoped(request):
-    return JsonResponse({'message': 'All good. You\'re authenticated and the access token has the appropriate scope'})
+    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'})

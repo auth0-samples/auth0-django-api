@@ -1,2 +1,7 @@
+from django.contrib.auth import authenticate
+
+
 def jwt_get_username_from_payload_handler(payload):
-    return payload.get('sub').replace('|', '.')
+    username = payload.get('sub').replace('|', '.')
+    authenticate(remote_user=username)
+    return username

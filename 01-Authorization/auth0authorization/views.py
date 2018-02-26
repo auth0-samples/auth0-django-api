@@ -3,7 +3,7 @@ import jwt
 import json
 from functools import wraps
 
-from django.http import HttpResponse
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from six.moves.urllib import request as req
 from cryptography.x509 import load_pem_x509_certificate
@@ -45,21 +45,23 @@ def requires_scope(required_scope):
                 for token_scope in token_scopes:
                     if token_scope == required_scope:
                         return f(*args, **kwargs)
-            return HttpResponse("You don't have access to this resource")
+            response = JsonResponse({'message': 'You don\'t have access to this resource'})
+            response.status_code = 403
+            return response
         return decorated
     return require_scope
 
 
 def public(request):
-    return HttpResponse("All good. You don't need to be authenticated to call this")
+    return JsonResponse({'message': 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'})
 
 
 @api_view(['GET'])
 def private(request):
-    return HttpResponse("All good. You only get this message if you're authenticated")
+    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated to see this.'})
 
 
 @api_view(['GET'])
 @requires_scope('read:messages')
 def private_scoped(request):
-    return HttpResponse("All good. You're authenticated and the access token has the appropriate scope")
+    return JsonResponse({'message': 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'})

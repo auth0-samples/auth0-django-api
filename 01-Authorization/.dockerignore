@@ -3,3 +3,4 @@
 .gitignore
 .git
 README.md
+*.sqlite3

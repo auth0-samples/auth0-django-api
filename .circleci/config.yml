@@ -18,14 +18,14 @@ jobs:
            name: background server
            command: sh exec.sh
            background: true
-      
-       - run:
+           
+      - run:
            name: Wait until server is online
-           command:  |
+           command: |
               until $(curl --output /dev/null --silent --head --fail http://localhost:3010/api/public); do
                   sleep 5
               done
-            
+         
       - run:
           name: Clone script test
           command: git clone -b refactor-for-integration https://github.com/rafanog/auth0-test-api-quickstarts.git test

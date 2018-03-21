@@ -19,7 +19,7 @@ jobs:
            command: sh exec.sh
            background: true
       
-      - run: sleep 20
+      - run: sleep 120
       
       - run:
           name: Clone script test
@@ -44,12 +44,8 @@ jobs:
 
       - run:
           name: Install test script dependency
-          command: |
-            cd test
-            ls -l
-            npm install
-            ls -l
-          #command: cd test && npm install && npm install asyncawait
+          command: cd test && npm install 
+          
       - run:
           name: Test
           command: cd test && npm test

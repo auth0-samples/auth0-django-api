@@ -19,7 +19,7 @@ jobs:
            command: sh exec.sh
            background: true
       
-      - run: sleep 120
+      - run: sleep 80
       
       - run:
           name: Clone script test
@@ -45,7 +45,7 @@ jobs:
       - run:
           name: Install test script dependency
           command: cd test && npm install 
-          
+
       - run:
           name: Test
           command: cd test && npm test

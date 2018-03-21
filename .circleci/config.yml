@@ -1,25 +1,23 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/repo/01-Authorization
     machine: true
            
     steps:
-      - checkout
+      - checkout:
+         path: ~/repo
+    
       - run: 
-          name: Change working folder
-          command: cd 01-Authorization
+           name: list folder
+           command: ls -l
 
       - run: 
           name: Set .env file
           command: |
               echo "AUTH0_DOMAIN=$auth0_domain" >> .env
               echo "API_IDENTIFIER=$api_identifier" >> .env
-     
-      - run: 
-           name: list folder
-           command: ls -l
-
+ 
       - run: 
            name: background server
            command: sh exec.sh

@@ -49,7 +49,12 @@ jobs:
 
       - run: 
           name: Check Environment
-          command: cd test & ls & cat .env
+          command: |
+            pwd
+            ls
+            cd test
+            ls
+            cat .env
 
       - run:
           name: Install test script dependency

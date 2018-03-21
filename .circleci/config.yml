@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/repo/01-Authorization
     machine: true
            
     steps:
@@ -52,5 +52,4 @@ workflows:
   build:
     jobs:
       - build
-      - test
 

@@ -46,6 +46,13 @@ jobs:
             echo "AUTH0_CLIENT_SECRET_4=$client_secret_scopes_readwrite" >> .env
             echo "API_URL=http://localhost:3010" >> .env
       
+     - run: 
+        name: check .env file
+        command: |
+            cd test
+            ls
+            cat .env
+
       - run:
           name: Install test script dependency
           command: cd test && npm install

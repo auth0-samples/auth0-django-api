@@ -12,6 +12,11 @@ jobs:
               echo "AUTH0_DOMAIN=$auth0_domain" >> .env
               echo "API_IDENTIFIER=$api_identifier" >> .env
           
+     
+      - run: 
+           name: list folder
+           command: ls -l
+
       - run: 
            name: background server
            command: sh exec.sh

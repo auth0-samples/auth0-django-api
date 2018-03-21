@@ -45,10 +45,10 @@ jobs:
             echo "AUTH0_CLIENT_ID_4=$client_id_scopes_readwrite" >> .env
             echo "AUTH0_CLIENT_SECRET_4=$client_secret_scopes_readwrite" >> .env
             echo "API_URL=http://localhost:3010" >> .env
-      
-     - run: 
-        name: check .env file
-        command: |
+
+    - run: 
+          name: Check Environment
+          command: |
             cd test
             ls
             cat .env

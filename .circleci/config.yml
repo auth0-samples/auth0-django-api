@@ -7,10 +7,6 @@ jobs:
     steps:
       - checkout:
          path: ~/repo
-    
-      - run: 
-           name: list folder
-           command: ls -l
 
       - run: 
           name: Set .env file
@@ -45,20 +41,14 @@ jobs:
             echo "AUTH0_CLIENT_ID_4=$client_id_scopes_readwrite" >> .env
             echo "AUTH0_CLIENT_SECRET_4=$client_secret_scopes_readwrite" >> .env
             echo "API_URL=http://localhost:3010" >> .env
-            cat .env
-
-      - run: 
-          name: Check Environment
-          command: |
-            pwd
-            ls
-            cd test
-            ls
-            cat .env
 
       - run:
           name: Install test script dependency
-          command: cd test && npm install
+          command: |
+            cd test
+            ls -l
+            npm install
+            ls -l
           #command: cd test && npm install && npm install asyncawait
       - run:
           name: Test

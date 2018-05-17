@@ -4,3 +4,4 @@ djangorestframework-jwt
 cryptography
 pyjwt
 python-dotenv
+django-cors-headers

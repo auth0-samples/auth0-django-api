@@ -1,4 +1,3 @@
-# Common Logic
 defaults: &defaults
     steps:
       - attach_workspace:
@@ -62,7 +61,6 @@ jobs:
       - AUTH0_CFG: 01-Authorization
       - SAMPLE_PATH: 01-Authorization
     <<: *defaults
-
 workflows:
   version: 2
   API-Tests:

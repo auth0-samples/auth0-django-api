@@ -1,13 +1,9 @@
-import os
 import jwt
-import json
 from functools import wraps
 
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
-from six.moves.urllib import request as req
-from cryptography.x509 import load_pem_x509_certificate
-from cryptography.hazmat.backends import default_backend
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 # Create your views here.
 
@@ -31,15 +27,7 @@ def requires_scope(required_scope):
         @wraps(f)
         def decorated(*args, **kwargs):
             token = get_token_auth_header(args[0])
-            AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-            API_IDENTIFIER = os.environ.get('API_IDENTIFIER')
-            jsonurl = req.urlopen('https://' + AUTH0_DOMAIN + '/.well-known/jwks.json')
-            jwks = json.loads(jsonurl.read())
-            cert = '-----BEGIN CERTIFICATE-----\n' + jwks['keys'][0]['x5c'][0] + '\n-----END CERTIFICATE-----'
-            certificate = load_pem_x509_certificate(cert.encode('utf-8'), default_backend())
-            public_key = certificate.public_key()
-            decoded = jwt.decode(token, public_key, audience=API_IDENTIFIER, algorithms=['RS256'])
-
+            decoded = jwt.decode(token, verify=False)
             if decoded.get("scope"):
                 token_scopes = decoded["scope"].split()
                 for token_scope in token_scopes:
@@ -52,6 +40,8 @@ def requires_scope(required_scope):
     return require_scope
 
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def public(request):
     return JsonResponse({'message': 'Hello from a public endpoint! You don\'t need to be authenticated to see this.'})
 

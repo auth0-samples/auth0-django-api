@@ -1,7 +1,8 @@
-django
-djangorestframework
-djangorestframework-jwt
-cryptography
-pyjwt
-python-dotenv
-django-cors-headers
+cryptography~=2.8
+django~=2.2.7
+djangorestframework~=3.10.3
+django-cors-headers~=3.1.1
+drf-jwt~=1.13.3
+pyjwt~=1.7.1
+python-dotenv~=0.10.3
+requests~=2.22.0

@@ -24,6 +24,7 @@ def jwt_decode_token(token):
     if public_key is None:
         raise Exception('Public key not found.')
 
-    api_identifier = os.environ.get('API_IDENTIFIER')
+    # api_identifier = os.environ.get('API_IDENTIFIER')
+    api_audience = os.environ.get('API_AUDIENCE') # https://<your-api-endpoint>.us.auth0.com/auth/v2/
     issuer = 'https://{}/'.format(auth0_domain)
-    return jwt.decode(token, public_key, audience=api_identifier, issuer=issuer, algorithms=['RS256'])
+    return jwt.decode(token, public_key, audience=api_audience, issuer=issuer, algorithms=['RS256'])

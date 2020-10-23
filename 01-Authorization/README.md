@@ -21,6 +21,7 @@ the app will just work:
 # .env file
 AUTH0_DOMAIN=example.auth0.com
 API_IDENTIFIER=YOUR_API_AUDIENCE
+API_AUDIENCE=https://example.auth0.com/auth/v2/
 
 ```
 
@@ -35,9 +36,9 @@ Once you've set those 2 environment variables:
 
 You can then try to do a GET to [http://localhost:3010/api/private](http://localhost:3010/api/private) which will
 throw an error if you don't send an access token signed with RS256 with the appropriate issuer and audience in the
-Authorization header. 
+Authorization header.
 
-You can also try to do a GET to 
+You can also try to do a GET to
 [http://localhost:3010/api/private-scoped/](http://localhost:3010/api/private-scoped) which will throw an error if
 you don't send an access token with the scope `read:messages` signed with RS256 with the appropriate issuer and audience
 in the Authorization header.

@@ -1,8 +1,7 @@
-cryptography~=2.8
+cryptography~=3.4.7
 django~=2.2.7
 djangorestframework~=3.10.3
 django-cors-headers~=3.1.1
-drf-jwt~=1.13.3
-pyjwt~=1.7.1
+drf-jwt~=1.19.1
+pyjwt~=2.1.0
 python-dotenv~=0.10.3
-requests~=2.22.0

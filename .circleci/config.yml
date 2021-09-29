@@ -29,7 +29,7 @@ jobs:
          
       - run:
           name: Clone script test
-          command: git clone -b patch/update-deps --depth 1 https://github.com/auth0-samples/api-quickstarts-tests test
+          command: git clone -b v0.0.1 --depth 1 https://github.com/auth0-samples/api-quickstarts-tests test
                       
       - run: 
           name: Prepare environment variables for test

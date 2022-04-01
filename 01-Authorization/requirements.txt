@@ -7,3 +7,4 @@ pyjwt~=1.7.1
 python-dotenv~=0.10.3
 requests~=2.26
 urllib3~=1.26
+cryptography~=3.4

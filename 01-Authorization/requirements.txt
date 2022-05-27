@@ -4,6 +4,6 @@ django-cors-headers~=3.12.0
 drf-jwt~=1.13.3
 pyjwt~=1.7.1
 python-dotenv~=0.10.3
-requests~=2.26
+requests~=2.27
 urllib3~=1.26
 cryptography~=3.4

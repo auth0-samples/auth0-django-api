@@ -2,7 +2,7 @@ version: 2
 updates:
 
   - package-ecosystem: "pip" 
-    directory: "/01-Authoirzation" 
+    directory: "/01-Authorization" 
     schedule:
       interval: "daily"
     ignore:

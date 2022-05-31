@@ -23,7 +23,7 @@ jobs:
       - run:
            name: Wait until server is online
            command: |
-              until $(curl --output /dev/null --silent --head --fail http://localhost:3010/api/public); do
+              until $(curl --output /dev/null --silent --fail http://localhost:3010/api/public); do
                   sleep 5
               done
          

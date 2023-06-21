@@ -1,4 +1,3 @@
-import logging
 from django.http import HttpRequest, JsonResponse
 from .authorization import RequestToken, authorized, can, getRequestToken
 

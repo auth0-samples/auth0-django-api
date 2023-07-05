@@ -1,5 +1,5 @@
 asgiref==3.7.2
-django==4.2.2
+django==4.2.3
 pyjwt==2.7.0
 python-dotenv==1.0.0
 sqlparse==0.4.4

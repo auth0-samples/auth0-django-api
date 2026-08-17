@@ -2,4 +2,4 @@ asgiref==3.7.2
 django==4.2.2
 pyjwt==2.7.0
 python-dotenv==1.0.0
-sqlparse==0.4.4
+sqlparse==0.6.0
